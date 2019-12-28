@@ -9,6 +9,7 @@ verify_ssl = true
 pylint = "*"
 pandas = "*"
 jupyter = "*"
+textwrap = "*"
 
 [requires]
 python_version = "3.8"
