@@ -9,6 +9,8 @@ verify_ssl = true
 pylint = "*"
 pandas = "*"
 jupyter = "*"
+connections = "*"
+collections = "*"
 textwrap = "*"
 
 [requires]
