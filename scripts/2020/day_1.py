@@ -2,6 +2,12 @@
 """Rough draft of Day 1 part 1
 This is terrible, clean up everything! In particular, set up module correctly for utilities"""
 
+# Import
+
+from os import listdir
+#print(listdir('aoc'))
+from utilities import load_data
+
 # Sample data
 
 samp = [1721, 979, 366, 299, 675, 1456]
@@ -55,6 +61,6 @@ def find_match3(data: list, target: int) -> list:
 #print(solution)
 #print(solution[0] * solution[1])
 
-solution3 = find_match3(data, 2020)
-print(solution3)
-print(solution3[0] * solution3[1] * solution3[2])
+#solution3 = find_match3(data, 2020)
+#print(solution3)
+#print(solution3[0] * solution3[1] * solution3[2])
