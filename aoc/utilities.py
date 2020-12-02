@@ -5,3 +5,5 @@ def load_data(year: int, day: int) -> str:
     with open(path) as f:
         program = f.read()
     return program
+
+x = 3
