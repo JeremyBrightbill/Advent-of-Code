@@ -1,5 +1,5 @@
 import sys
-from aoc.utilities import *
+from utilities import *
 
 from collections import namedtuple
 
@@ -11,7 +11,7 @@ sample1 = '13-15 b: bbbbbbbbbbbbgbb'
 
 # Puzzle input
 
-data_raw: str = load_data(2020, 2)
+data_raw: str = load_data(2)
 data: list = data_raw.split('\n')
 
 # Solve part 1 -------------------------------
@@ -30,7 +30,7 @@ def split_element(x: str) -> namedtuple:
     Output = namedtuple('Output', 'minimum maximum letter password')
     return Output(int(minmax[0]), int(minmax[1]), letter, split_1[2])
 
-# x = split_element(sample1)
+x = split_element(sample1)
 
 def validate_pw(pw: namedtuple) -> bool:
     count: int = pw.password.count(pw.letter)
@@ -42,8 +42,26 @@ def validate_pw(pw: namedtuple) -> bool:
 data2: list = [split_element(x) for x in data]
 data3: list = [validate_pw(x) for x in data2]
 
-print("Part 1:")
-print(data3.count(True))
+#print("Part 1:")
+#print(data3.count(True))
 
 
 # Solve Part 2 -------------------------------
+
+def validate_pw2(pw: namedtuple) -> bool:
+    position1: str = pw.password[pw.minimum - 1]
+    position2: str = pw.password[pw.maximum - 1]
+    
+    test1: bool = position1 == pw.letter
+    test2: bool = position2 == pw.letter
+    count: int = sum([test1, test2])
+
+    return count == 1
+    # return position1
+
+#print(validate_pw2(x))
+
+data4: list = [validate_pw2(x) for x in data2]
+
+print("Part 2:")
+print(data4.count(True))

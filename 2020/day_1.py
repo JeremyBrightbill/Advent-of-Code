@@ -1,5 +1,5 @@
 import sys
-from aoc.utilities import *
+from utilities import *
 
 # Import -------------------------------------
 
@@ -9,7 +9,7 @@ samp = [1721, 979, 366, 299, 675, 1456]
 
 # Puzzle input 
 
-data_raw = load_data(2020, 1)
+data_raw = load_data(1)
 data_split = data_raw.split('\n')
 data = [int(number) for number in data_split]
 
