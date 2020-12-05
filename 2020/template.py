@@ -1,5 +1,5 @@
 import sys
-from aoc.utilities import *
+from utilities import *
 
 # Import -------------------------------------
 

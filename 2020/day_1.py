@@ -9,10 +9,8 @@ samp = [1721, 979, 366, 299, 675, 1456]
 
 # Puzzle input 
 
-data_raw = load_data(1)
-data_split = data_raw.split('\n')
-data = [int(number) for number in data_split]
-
+data_raw = load_data(2020, 1)
+data = [int(number) for number in data_raw]
 # Solve part 1 ------------------------------------
 
 def compare_two(n1: int, n2: int, target: int) -> bool:

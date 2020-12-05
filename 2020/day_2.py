@@ -1,7 +1,5 @@
-import sys
-from utilities import *
-
 from collections import namedtuple
+from utilities import *
 
 # Import -------------------------------------
 
@@ -11,8 +9,7 @@ sample1 = '13-15 b: bbbbbbbbbbbbgbb'
 
 # Puzzle input
 
-data_raw: str = load_data(2)
-data: list = data_raw.split('\n')
+data: list = load_data(2020, 2)
 
 # Solve part 1 -------------------------------
 
