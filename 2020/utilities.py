@@ -6,3 +6,8 @@ def load_data(year: int, day: int) -> list:
         data = f.readlines()
     return [element.strip() for element in data] # remove \n characters
 
+def load_raw(year: int, day: int) -> str:
+    path: str = f'{str(year)}/data/{str(day)}.txt'
+    with open(path) as f:
+        data = f.read()
+    return data
