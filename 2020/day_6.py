@@ -11,7 +11,8 @@ parsed: list = [item.replace('\n', ' ') for item in data.split('\n\n')]
 # Solve parts 1 and 2 (together) ------------------------------
 
 def count_group(group: str, method: str) -> int: 
-
+    """Count the number of questions  which {"any"/"every"} person
+    in the group declared"""
     people: list = [set(person) for person in group.split(' ')]
 
     if method == "any":
