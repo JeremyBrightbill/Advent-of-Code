@@ -2,4 +2,4 @@
 .pytest_cache
 .ipynb_checkpoints
 .venv/
-**/__pycache/
+__pycache__/
