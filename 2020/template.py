@@ -1,11 +1,10 @@
 from utilities import *
 
-DAY: int = 3
+DAY: int = 
 
 # Import -------------------------------------
 
 # Puzzle input
-
 data = load_data(2020, DAY)
 
 # Sample data
