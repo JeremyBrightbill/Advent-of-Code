@@ -23,7 +23,7 @@ data = load_data(2020, DAY)
 
 if __name__ == "__main__": 
     
-    print("Test")
+    print(data)
 
     # solution_1 = 
     # print(f'Part 1: {solution_1}')
