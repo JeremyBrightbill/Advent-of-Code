@@ -64,78 +64,20 @@ for i in range(100):
 
 # Solve Part 2 -------------------------------
 
-#total: int = 0
-
 def count_contents(bag: str) -> int: 
-
-    contents: dict = parsed[bag]
+    """Recusively count all other bags contained in a bag"""
     total: int = 0
-
-    # Base case
-    if len(contents) == 0: 
-        return 0
+    contents: dict = parsed[bag]
+    
+    # Base case: len(contents) == 0, total stays 0
+    
     # Recursive case:
     if len(contents) > 0: 
         for bag_type in contents: 
             n: int = contents[bag_type]
             total += n + n * count_contents(bag_type)
-        return total
-            # return count_contents(bag_type)
-            # internal: int = count_contents(bag_type)
-            # total += n * internal
-
-    # return total
-    # return contents
-
-# def count_contents3(bag: str) -> int: 
-
-#     global total
-#     local_total: int = 0
-#     contents: dict = parsed[bag]
-
-#     # Base case
-#     if len(contents) == 0: 
-#         return local_total
-
-#     # Recursive case
-#     else: 
-#         for bag_type in contents: 
-#             n = contents[bag_type]
-#             total += n
-#             local_total += count_contents(bag_type)
-#         return n
-
-
-
-
-# def count_contents(bag: str) -> int: 
-#     """Find how many other bags the given bag contains"""
-#     output: int = 0
-#     contents: dict = parsed[bag]
-#     global examine_next
-#     examine_next = list(contents.keys())
-#     for bag in contents: 
-#         output += contents[bag]
-        
-#     return output
-
-# examine_next: list = ["vibrant orange"]
-# running_total: int = 0
-
-# for item in examine_next:
-#     running_total += count_contents(item)
-
-# target: str = "shiny gold"
-# target_total_contents: int = 0
-
-# #while True: 
-# target_contents: dict = parsed[target]
-# if len(target_contents) == 0: 
-#     #break
-#     print("done")
-# else: 
-#     for bag in target_contents: 
-#         target_total_contents += target_contents[bag]
+    
+    return total
 
 # Output -------------------------------------
 
@@ -144,8 +86,5 @@ if __name__ == "__main__":
     solution_1 = len(can_hold)
     print(f"Part 1: {solution_1}")
 
-    #print(parsed["shiny gold"])
-
-    
     solution_2 = count_contents("shiny gold")
     print(f'Part 2: {solution_2}')
