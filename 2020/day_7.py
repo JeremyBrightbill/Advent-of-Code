@@ -1,4 +1,3 @@
-import re
 from utilities import *
 
 DAY: int = 7
@@ -28,7 +27,7 @@ bags_all: list = list(parsed.keys())
 # Solve part 1 -------------------------------
 
 def find_if_holds(bag: str, target: str = "shiny gold") -> bool:
-    "Recursively check if a given bag can hold the target bag"
+    """Recursively check if a given bag can hold the target bag"""
     contents: dict = parsed[bag]
 
     # Base case
