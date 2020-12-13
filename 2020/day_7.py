@@ -27,40 +27,21 @@ bags_all: list = list(parsed.keys())
 
 # Solve part 1 -------------------------------
 
-target: str = "shiny gold"
-can_hold: list = []
-cannot_hold: list = []
-unknown: list = bags_all.copy()
+def find_if_holds(bag: str, target: str = "shiny gold") -> bool:
+    "Recursively check if a given bag can hold the target bag"
+    contents: dict = parsed[bag]
 
-def find_if_holds(container: str) -> str:
+    # Base case
+    if len(contents) == 0: 
+        return False
+    elif target in list(contents.keys()):
+        return True
 
-    output: str = "other"
-
-    contents: dict = parsed[container]
-    contents_keys: list = list(contents.keys())
-
-    if len(contents_keys) == 0: 
-        output = "no more" 
+    # Recursive case
     else: 
-        contains_target: bool = target in contents_keys
-        contains_can_hold: bool = any([item in can_hold for item in contents_keys])
-        if contains_target or contains_can_hold:
-            output = "target" 
-    
-    return output
-
-
-for i in range(100):
-    for container in unknown: 
-        contents: str = find_if_holds(container)
-        if contents == "target": 
-            can_hold.append(container)
-            unknown.remove(container)
-        elif contents == "no more": 
-            cannot_hold.append(container)
-            unknown.remove(container)
-        else: 
-            continue    
+        test: list = [find_if_holds(bag_type) for bag_type in contents]
+        return any(test)
+        
 
 # Solve Part 2 -------------------------------
 
@@ -69,7 +50,7 @@ def count_contents(bag: str) -> int:
     total: int = 0
     contents: dict = parsed[bag]
     
-    # Base case: len(contents) == 0, total stays 0
+    # Base case: if no contents, total stays 0
     
     # Recursive case:
     if len(contents) > 0: 
@@ -79,11 +60,12 @@ def count_contents(bag: str) -> int:
     
     return total
 
+
 # Output -------------------------------------
 
 if __name__ == "__main__": 
     
-    solution_1 = len(can_hold)
+    solution_1 = [find_if_holds(bag) for bag in bags_all].count(True)
     print(f"Part 1: {solution_1}")
 
     solution_2 = count_contents("shiny gold")
