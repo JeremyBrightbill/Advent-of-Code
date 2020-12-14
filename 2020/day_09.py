@@ -1,12 +1,13 @@
-"""Title"""
-DAY: int = 
+"""Encoding Error"""
+DAY: int = 9
 
 from utilities import *
 
 # Import -------------------------------------
 
 # Puzzle input
-data = load_data(2020, DAY)
+data_raw: list = load_data(2020, DAY)
+data: list = [int(item) for item in data_raw]
 
 # Sample data
 
