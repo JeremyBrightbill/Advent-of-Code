@@ -1,6 +1,7 @@
-from utilities import *
-
+"""Handy Haversacks"""
 DAY: int = 7
+
+from utilities import *
 
 # Import -------------------------------------
 

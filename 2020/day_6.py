@@ -1,6 +1,7 @@
-from utilities import *
-
+"""Custom Customs"""
 DAY: int = 6
+
+from utilities import *
 
 # Import ------------------------------------------------------
 

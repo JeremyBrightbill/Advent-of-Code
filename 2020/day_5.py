@@ -1,6 +1,7 @@
-from utilities import *
-
+"""Binary Boarding"""
 DAY: int = 5
+
+from utilities import *
 
 # Import -------------------------------------
 

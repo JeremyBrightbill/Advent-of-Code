@@ -1,6 +1,7 @@
-from utilities import load_raw
-
+"""Passport Processing"""
 DAY: int = 4
+
+from utilities import load_raw
 
 # Import -------------------------------------
 

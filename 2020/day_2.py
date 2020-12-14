@@ -1,3 +1,6 @@
+"""Password Philosophy"""
+DAY: int = 2
+
 from collections import namedtuple
 from utilities import *
 
@@ -9,7 +12,7 @@ sample1 = '13-15 b: bbbbbbbbbbbbgbb'
 
 # Puzzle input
 
-data: list = load_data(2020, 2)
+data: list = load_data(2020, DAY)
 
 # Solve part 1 -------------------------------
 

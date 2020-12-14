@@ -1,3 +1,6 @@
+"""Report Repair"""
+DAY: int = 1
+
 import sys
 from utilities import *
 
@@ -9,7 +12,7 @@ samp = [1721, 979, 366, 299, 675, 1456]
 
 # Puzzle input 
 
-data_raw = load_data(2020, 1)
+data_raw = load_data(2020, DAY)
 data = [int(number) for number in data_raw]
 # Solve part 1 ------------------------------------
 

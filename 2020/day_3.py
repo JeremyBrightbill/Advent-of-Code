@@ -1,17 +1,16 @@
+"""Toboggan Trajectory"""
+DAY: int = 3
+
 import math
 from utilities import load_data
-
-DAY: int = 3
 
 # Import -------------------------------------
 
 # Puzzle input
-
 data = load_data(2020, DAY)
 
 # Sample data
 
-#        NOT AVAILABLE FOR THIS ONE
 
 # Solve part 1 -------------------------------
 
