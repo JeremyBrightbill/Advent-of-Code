@@ -36,14 +36,8 @@ def validate_pw(pw: namedtuple) -> bool:
     count: int = pw.password.count(pw.letter)
     return count >= pw.minimum and count <= pw.maximum
 
-# print(x)
-# print(validate_pw(x))
-
 data2: list = [split_element(x) for x in data]
 data3: list = [validate_pw(x) for x in data2]
-
-#print("Part 1:")
-#print(data3.count(True))
 
 
 # Solve Part 2 -------------------------------
@@ -57,11 +51,15 @@ def validate_pw2(pw: namedtuple) -> bool:
     count: int = sum([test1, test2])
 
     return count == 1
-    # return position1
-
-#print(validate_pw2(x))
 
 data4: list = [validate_pw2(x) for x in data2]
 
-print("Part 2:")
-print(data4.count(True))
+# Output ---------------------------------------------------
+
+if __name__ == "__main__": 
+
+    print("Part 1:")
+    print(data3.count(True))
+
+    print("Part 2:")
+    print(data4.count(True))
