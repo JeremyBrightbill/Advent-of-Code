@@ -1,18 +1,13 @@
 """Title"""
 DAY: int = 10
 
-# from utilities import load_data
-# from os import listdir
+from utilities import load_data
+from copy import deepcopy
 
 # Import -------------------------------------
 
-def load_data(day: int) -> list:
-    path: str = f'data/{str(day)}.txt'
-    with open(path) as f:
-        data = f.readlines()
-    return [element.strip() for element in data] # remove \n characters
 # Puzzle input
-data_raw = [int(item) for item in load_data(DAY)]
+data_raw = [int(item) for item in load_data(2020, DAY)]
 data = [0] + sorted(data_raw) + [max(data_raw) + 3]
 
 # Sample data
@@ -36,74 +31,67 @@ pt1: list = list_differences(data)
     
 # Solve Part 2 -------------------------------
 
-# def find_omissible(x: list) -> list:
-
-#     # Make sure sorted
-#     x = sorted(x)
-#     output: list = []
-
-#     for i, item in enumerate(x[:-1]):
-#         if i > 0 and x[i+1] - x[i-1] <= 3: 
-#             output.append(item)
-    
-#     return output
-
-# omissible: list = find_omissible(samp1)
-
-# def apply_omissions(x: list, omissible_list: list) -> list:
-
-#     output: list = []
-
-#     for item in omissible_list: 
-#         copy: list = x.copy()
-#         del copy[item]
-#         output.append(copy)
-
-#     return output
-
-# samp2: list = apply_omissions(samp1, omissible)
-
-
-def omit_where_possible(x: list) -> list:
-    """Function that takes an arrangement (x), determines which items are omissible, 
-    and returns a list of all possible new arrangements"""
+def find_omissible(x: list) -> list:
+    """Test to find omissible items in list (those which would not leave a
+    gap of more than 3 between contiguous items)"""
 
     # Make sure sorted
     x = sorted(x)
-    omissible: list = []
-
-    for i, item in enumerate(x[:-1]): # MUST BE A PROBLEM HERE!!!
-        if i > 0 and x[i+1] - x[i-1] <= 3: 
-            omissible.append(item)
-    
     output: list = []
 
-    for item in omissible: 
+    for i, item in enumerate(x[:-1]):
+        if i > 0 and x[i+1] - x[i-1] <= 3: 
+            output.append(item)
+
+    return output
+    
+
+def omit_where_possible(x: list, omissible: list) -> list:
+    """Find which elements in list (except first and last) can be omitted, 
+    if all remaining items are within 3 units of each other. Then produce list
+    with all these combinations with one item omitted"""
+    
+    # Make sure sorted
+    x = sorted(x)
+    omissible_local: list = [item for item in omissible if item in x]
+    output: list = []
+
+    for item in omissible_local: 
         copy: list = x.copy()
         copy.remove(item)
         output.append(copy)
 
     return output
+    
+def count_all_combos(x: list) -> list:
+    """Recursive function to find out how many combinations each level down
+    
+    TO SPEED UP: Only need to find omissible once. """
 
-# THIS IS ON THE RIGHT TRACK, just figure out how to keep track of new values. 
-# Then simplify
+    overall: list = [x.copy()]
+    omissible_all = find_omissible(x)
+    checking_now: list = [x.copy()]
+    checking_next: list = []
+    count: int = 0
 
-samp2: list = omit_where_possible(samp1)
+    while len(checking_now) > 0: 
+        for item in checking_now: 
+            combos: list = omit_where_possible(item, omissible_all)
+            for combo in combos: 
+                if combo not in overall: 
+                    overall.append(combo)
+                    count += 1
+                    print(count)
+                    if len(find_omissible(combo)) > 0:
+                        checking_next.append(combo)
+        print(f'checking_next: {len(checking_next)}')
+        checking_now, checking_next = checking_next, []
+        print(f'overall: {len(overall)}')
+    return overall  
 
-samp3: list = []
 
-for item in samp2: 
-    omitted: list = omit_where_possible(item)
-    if len(omitted) > 0: 
-        for sublist in omitted: 
-            samp3.append(sublist)
-
-#samp4: list = []
-
-for item in samp3: 
-    if item not in samp2: 
-        samp2.append(item)
-
+test1: list = count_all_combos(samp1)
+test2: list = count_all_combos(data)
 
 
 # Output -------------------------------------
@@ -113,6 +101,7 @@ if __name__ == "__main__":
     solution_1: int = pt1.count(1) * pt1.count(3)
     print(f'Part 1: {solution_1}')
 
-    print(samp2)
-    # solution_2: list = test1
-    # print(f'Part 2: {solution_2}')
+    
+    #test = test1
+    solution_2: list = test2
+    print(f'Part 2: {solution_2}')
