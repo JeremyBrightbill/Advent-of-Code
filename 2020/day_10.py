@@ -53,7 +53,7 @@ def choose_next(current: int, full: list) -> list:
     return possible
 
 def count_solutions(current: int, full: list) -> int:
-    """Given current position in (sorted) full list of adapters, counts all possible 
+    """Given current value in (sorted) full list of adapters, counts all possible 
     options for the next step. Then runs recursively to count all options for every step 
     after that."""
 
@@ -87,6 +87,43 @@ def count_solutions(current: int, full: list) -> int:
     # all combinations
 
 
+def find_all_solutions(already: list, full: list) -> list: 
+    """Given values already selected in full (sorted) list of adapters, finds all 
+    possible options for the next step. Then runs recursively to find all options 
+    for every step after that, all the way to finding all possible arrangements."""
+
+    current: int = already[-1]
+    index: int = full.index(current)
+    remaining: list = full[index + 1:]
+    output: list = []
+
+    # base case  
+    if already[-1] == full[-1]: 
+        return already
+
+    # recursive case
+    possible_next: list = []
+    for item in remaining: 
+        if item - current <= 3: 
+            possible_next.append(item)
+        else:
+            break       
+
+    for adapter in possible_next: 
+        new_arrange: list = already.copy()
+        new_arrange.append(adapter)
+        output.append(find_all_solutions(new_arrange, full))
+        # solutions: list = find_all_solutions(new_arrange, full)
+        # print(solutions)
+        # for solution in solutions: 
+        #     print(solution)
+        #     #output.append(solution)
+
+    return output
+
+    # This almost works
+
+
 # Output -------------------------------------
 
 if __name__ == "__main__": 
@@ -94,7 +131,7 @@ if __name__ == "__main__":
     solution_1: int = pt1.count(1) * pt1.count(3)
     print(f'Part 1: {solution_1}')
 
-    test1: list = count_solutions(0, samp1)
+    test1: list = find_all_solutions(already=samp1[:-6], full=samp1)
 
     print(samp1)
     solution_2: list = test1
