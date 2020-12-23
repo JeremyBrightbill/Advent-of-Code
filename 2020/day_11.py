@@ -35,6 +35,7 @@ class Room:
             output: list = []
             # STOPPED HERE
 
+    # Allow for rule changes! Could be Part 2 wrinkle
 
     # def apply(x: list = self.arrangement): 
 
