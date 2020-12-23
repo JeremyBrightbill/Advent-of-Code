@@ -14,6 +14,10 @@ data = [0] + sorted(data_raw) + [max(data_raw) + 3]
 samp1_raw: list = [16, 10, 15, 5, 1, 11, 7, 19, 6, 12, 4]
 samp1: list = [0] + sorted(samp1_raw) + [max(samp1_raw) + 3]
 
+samp2_raw: list = [28, 33, 18, 42, 31, 14, 46, 20, 48, 47, 24, 23, 49, 45, 19, 38, \
+    39, 11, 1, 32, 25, 35, 8, 17, 7, 9, 4, 2, 34, 10, 3]
+samp2: list = [0] + sorted(samp2_raw) + [max(samp2_raw) + 3]
+
 # Solve part 1 -------------------------------
 
 def list_differences(x: list) -> list:
@@ -30,6 +34,30 @@ def list_differences(x: list) -> list:
 pt1: list = list_differences(data)
     
 # Solve Part 2 -------------------------------
+
+def count_branches_group(point: int, x: list) -> int:
+    """Given a choice point in a list, count how many
+    downstream branches are created, recursively until end of conditional group. 
+    Output n branches. [Next, apply this function to each group in list]"""
+
+    index: int = x.index(point)
+    remaining: list = x[index + 1:] 
+    output: int = 0
+    
+    choices: list = []
+    for item in remaining: 
+        if item - point <= 3: 
+            choices.append(item)
+            output += 1
+        else:
+            break
+
+    # if choices: 
+    #     for choice in choices: 
+    #         new: int = count_branches_group(choice, x)
+    #         output += new - 1
+    
+    return choices
 
 # def choose_next(current: int, full: list) -> list:
 #     """Given current position in list of adapters, list all possible options
@@ -195,8 +223,8 @@ if __name__ == "__main__":
     solution_1: int = pt1.count(1) * pt1.count(3)
     print(f'Part 1: {solution_1}')
 
-    test1 = count_all_solutions(current=0, full=samp1)
+    test1 = count_branches_group(4, samp1)
 
     #print(samp1)
-    solution_2: list = count_all_solutions(current=data[0], full=data) 
+    solution_2 = test1
     print(f'Part 2: {solution_2}')
