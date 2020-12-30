@@ -79,15 +79,15 @@ class Room:
         elif y < 0 or y >= self.y_len: 
             raise ValueError("Invalid y-coordinate")
 
-        output: list = []
+        spots: list = []
 
         for change_x in [-1, 0, 1]:
             for change_y in [-1, 0, 1]: 
 
                 if not (change_x == 0 and change_y == 0): 
-                    output.append(self.find_first_visible(x, y, change_x, change_y))
+                    spots.append(self.find_first_visible(x, y, change_x, change_y))
 
-        return output
+        return [_ for _ in spots if _]
 
     def apply(self, method: str): 
         """Apply a single round of the seating rules to all seats simultaneously"""
