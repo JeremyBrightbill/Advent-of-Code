@@ -1,4 +1,6 @@
-"""Adapter Array"""
+"""--- Day 10: Adapter Array ---
+https://adventofcode.com/2020/day/10"""
+
 DAY: int = 10
 
 from utilities import load_data

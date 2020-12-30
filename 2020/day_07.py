@@ -1,4 +1,6 @@
-"""Handy Haversacks"""
+"""--- Day 7: Handy Haversacks ---
+https://adventofcode.com/2020/day/7"""
+
 DAY: int = 7
 
 from utilities import *

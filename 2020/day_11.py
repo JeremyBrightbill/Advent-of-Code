@@ -1,4 +1,6 @@
-"""Seating System"""
+"""--- Day 11: Seating System ---
+https://adventofcode.com/2020/day/11"""
+
 DAY: int = 11
 
 from utilities import *

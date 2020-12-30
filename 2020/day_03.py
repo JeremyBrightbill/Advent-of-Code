@@ -1,4 +1,6 @@
-"""Toboggan Trajectory"""
+"""--- Day 3: Toboggan Trajectory ---
+https://adventofcode.com/2020/day/3"""
+
 DAY: int = 3
 
 import math

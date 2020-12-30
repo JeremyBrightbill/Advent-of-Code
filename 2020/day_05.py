@@ -1,4 +1,6 @@
-"""Binary Boarding"""
+"""--- Day 5: Binary Boarding ---
+https://adventofcode.com/2020/day/5"""
+
 DAY: int = 5
 
 from utilities import *
